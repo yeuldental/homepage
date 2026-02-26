@@ -991,3 +991,36 @@ $(function () {
     });
   });
 });
+
+// Smooth anchor scroll (navbar 높이만큼 오프셋 적용)
+document.addEventListener("DOMContentLoaded", () => {
+  const nav = document.querySelector(".navbar");
+
+  // smooth-scroll 라이브러리 사용
+  if (window.SmoothScroll) {
+    new SmoothScroll('a[href^="#"]', {
+      speed: 650,
+      speedAsDuration: true,
+      offset: () => (nav ? nav.offsetHeight + 8 : 0),
+      updateURL: false,
+      easing: "easeInOutCubic",
+    });
+  }
+
+  // 모바일에서 메뉴 클릭 후 접히도록 (Bootstrap collapse)
+  const navbarCollapseEl = document.getElementById("navbar");
+  document.querySelectorAll('.navbar a.nav-link[href^="#"]').forEach((a) => {
+    a.addEventListener("click", () => {
+      if (!navbarCollapseEl) return;
+      if (
+        navbarCollapseEl.classList.contains("show") &&
+        window.bootstrap?.Collapse
+      ) {
+        const instance =
+          bootstrap.Collapse.getInstance(navbarCollapseEl) ||
+          new bootstrap.Collapse(navbarCollapseEl, { toggle: false });
+        instance.hide();
+      }
+    });
+  });
+});
