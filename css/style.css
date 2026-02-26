@@ -1733,18 +1733,31 @@ blockquote.vert-move {
     color: #215499;
 }
 @media screen and (max-width: 991px) {
+    [data-overlay-dark]:before {
+        width: 70% !important;
+    }
+    .header {
+        word-break: keep-all;
+    }
     .header h1 {
         font-size: 18px;
     }
-.header h1 span {
-    font-size: 90px;
-    line-height: 90px;
-}
-    .header h2 {
-        font-size: 45px;
+    .header h1 span {
+        font-size: 90px;
+        line-height: 90px;
     }
-    
-
+    .header h2 {
+        font-size: 2.3rem;
+        width:65%;
+    }
+    .header p {
+        font-size: 1.1rem;
+        line-height: 1.3;
+        width:65%;
+    }
+    /* .header .clinichours p {
+        font-size:0.9rem;
+    } */
 }
 
 
